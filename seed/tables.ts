@@ -12,8 +12,7 @@ export async function seedDB() {
 
             for (let y = 0 ; y < 10; y++){
                 const document = new TableModel({
-                    seats : 2,
-                    is_booked: false
+                    seats : 2
                 })
                 console.log(document)
                 await document.save();
@@ -21,16 +20,14 @@ export async function seedDB() {
 
             for (let y = 0 ; y < 2; y++){
                 const document = new TableModel({
-                    seats : 4,
-                    is_booked: false
+                    seats : 4
                 })
                 await document.save();
             }
 
             for (let y = 0 ; y < 2; y++){
                 const document = new TableModel({
-                    seats : 6,
-                    is_booked: false
+                    seats : 6
                 })
                 await document.save();
             }

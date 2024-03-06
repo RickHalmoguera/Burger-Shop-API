@@ -9,7 +9,6 @@ export interface ReservationInterface {
   hour : string,
   persons: number,
   table_id: string,
-  is_booked: boolean
 }
 
 const reservationSchema = new Schema({
@@ -20,7 +19,6 @@ const reservationSchema = new Schema({
   hour: {type: String, required: true},
   persons: {type: Number, required: true},
   table_id:{type: Schema.Types.ObjectId,ref: TableModel, required: true},
-  is_booked: {type: Boolean, required: true}
 })
 
 export const ReservationModel = mongoose.model<ReservationInterface>("reservations", reservationSchema);

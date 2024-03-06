@@ -1,5 +1,5 @@
 import express, {Request, Response} from "express"
-import { findAvailableHours } from "../services/reservationsServices"
+import { findAvailableHours } from "../services/availabilityServices"
 
 
 export const availabilityRouter = express.Router()
@@ -9,14 +9,14 @@ availabilityRouter.post('/', async (req: Request, res: Response) => {
       const { date, persons } = req.body
 
       if (!date || !persons) {
-        return res.status(400).json({ error: "Se requiere la fecha y el número de personas." });
+        return res.status(400).json({ error: "Plese provide the require info" });
       }
   
       const availableHours = await findAvailableHours(new Date(date), persons)
 
       res.json({ availableHours })
     } catch (error) {
-      console.error("Error al consultar la disponibilidad de mesas:", error);
-      res.status(500).json({ error: "Ocurrió un error al consultar la disponibilidad de mesas." })
+      console.error("Error fetching the hours:", error);
+      res.status(500).json({ error: "Opps! somethig went wrong" })
     }
   })
