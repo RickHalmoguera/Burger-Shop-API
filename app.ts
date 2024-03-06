@@ -1,5 +1,5 @@
 import express from "express"
-import { connectToDb } from "./connectToDb"
+import { connectToDb, getCollections } from "./connectToDb"
 import router from "./routes"
 var cors = require('cors')
 const corsOptions = {
@@ -11,11 +11,12 @@ const corsOptions = {
   };
 
 
-  connectToDb()
-export const app = express()
+const app = express()
 app.use(cors(corsOptions))
 
 app.use(express.json())
+connectToDb()
+
 app.use(router)
 
 
